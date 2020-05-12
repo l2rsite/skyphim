@@ -1,18 +1,36 @@
-<script type='text/javascript'>
-window.onload = function() 
-{
-    $.ajax({
-        type: 'GET',
-        url: 'https://get.skyphim.net/TV.php',
-        data: {request: 'request'},
-        dataType: 'json',
-        success: function (data) {
-           if(data.active==true){
-               alert("success");
-           }else{
-                alert("failure");
-           }
-
-        }
-};
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hướng dẫn jQuery Ajax - Thienanblog.com</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <a href="#" id="load-du-lieu">Load dữ liệu</a>
+    </div>
+    <div id="noidung">
+        
+    </div>
+    <script type="text/javascript">
+     $(document).ready(function() {
+        $('#load-du-lieu').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'https://get.skyphim.net/FB/2.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    emNguoiYeu: "Em Yêu Anh",
+                    anhNguoiYeu: "Anh không phải người dễ dãi nhé"
+                }
+            }).done(function(ketqua) {
+                $('#noidung').html(ketqua);
+            });
+            
+        });
+    });
+    </script>
+</body>
+</html>
