@@ -14,18 +14,13 @@
         
     </div>
     <script type="text/javascript">
-     $(document).ready(function() {
+    $(document).ready(function() {
         $('#load-du-lieu').click(function(e) {
             e.preventDefault();
-            $.ajax({
-                url: 'https://get.skyphim.net/FB/2.php',
-                type: 'POST',
-                dataType: 'html',
-                data: {
-                    emNguoiYeu: "Em Yêu Anh",
-                    anhNguoiYeu: "Anh không phải người dễ dãi nhé"
-                }
-            }).done(function(ketqua) {
+            $.post('http://get.skyphim.net/FB/2.php', {
+                emNguoiYeu: "Em Yêu Anh",
+                anhNguoiYeu: "Anh không phải người dễ dãi nhé"
+            },function(ketqua) {
                 $('#noidung').html(ketqua);
             });
             
